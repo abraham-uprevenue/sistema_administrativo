@@ -46,7 +46,7 @@ class Cliente extends Resource
             Text::make('Nombre de la persona', 'nombre')->required(),
             Text::make('Nombre de la empresa', 'nombre_empresa')->required(),
             Text::make('Correo', 'email')->required(),
-            Text::make('Teléfono', 'telefono'),
+            Text::make('Teléfono', 'telefono')->rules('required', 'digits:10'),
         ];
     }
 
