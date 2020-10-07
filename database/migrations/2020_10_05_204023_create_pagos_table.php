@@ -15,7 +15,7 @@ class CreatePagosTable extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('empleado_id');
             $table->decimal('Monto');
             $table->string('concepto');
             $table->date('fecha');
