@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
+use app\Nova\Lenses\NumeroProyectos;
 
 class Cliente extends Resource
 {
@@ -82,7 +83,9 @@ class Cliente extends Resource
      */
     public function lenses(Request $request)
     {
-        return [];
+        return [
+            new NumeroProyectos
+        ];
     }
 
     /**
