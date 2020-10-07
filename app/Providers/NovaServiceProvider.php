@@ -92,4 +92,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         //
     }
 
+    //Nova::translations(nova/resources/lang/es);
+
 }

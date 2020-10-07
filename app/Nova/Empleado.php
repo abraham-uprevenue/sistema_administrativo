@@ -12,6 +12,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsToMany;
+use app\Nova\Filters\EmpleadoActivo;
 
 class Empleado extends Resource
 {
@@ -86,7 +87,10 @@ class Empleado extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+
+            new EmpleadoActivo
+        ];
     }
 
     /**
