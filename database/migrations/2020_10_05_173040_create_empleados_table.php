@@ -18,6 +18,10 @@ class CreateEmpleadosTable extends Migration
             $table->string('Nombre');
             $table->string('Apellido');
             $table->date('nacimiento');
+            $table->date('ingreso');
+            $table->boolean('is_active)->default(true);
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('puesto_id');
             $table->timestamps();
             
         });
