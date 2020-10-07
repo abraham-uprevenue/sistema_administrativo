@@ -51,7 +51,7 @@ class Pago extends Resource
 
             Select::make('Concepto', 'concepto')->options(['nomina' => 'Nomina', 'bono' => 'Bono'])->required(),
 
-            Date::make('Fecha','fecha')->required(),
+            Date::make('Fecha del pago','fecha')->required(),
 
             BelongsTo::make('Empleado')
         ];
