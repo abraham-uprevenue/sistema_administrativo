@@ -8,6 +8,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
 use app\Nova\Lenses\NumeroProyectos;
+use Khalin\Nova\Field\Link;
 
 class Cliente extends Resource
 {
@@ -47,9 +48,14 @@ class Cliente extends Resource
 
             Text::make('Nombre de la persona', 'nombre')->required(),
             Text::make('Nombre de la empresa', 'nombre_empresa')->required(),
-            Text::make('Correo', 'email')->required(),
+            Text::make('Correo', 'email')->required()->hideFromIndex(),
             Text::make('Teléfono', 'telefono')->rules('required', 'digits:10'),
-            HasMany::make('Proyecto')
+            HasMany::make('Proyecto'),
+            Link::make('Correo', 'email')
+                ->url(function () {
+                    return "mailto:{$this->email}";
+                })
+                ->onlyOnIndex()
         ];
     }
 
