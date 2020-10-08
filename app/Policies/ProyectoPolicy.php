@@ -53,7 +53,7 @@ class ProyectoPolicy
      */
     public function update(User $user, Proyecto $proyecto)
     {
-        //
+        return true;
     }
 
     /**

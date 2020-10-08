@@ -9,6 +9,8 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Boolean;
 
 class Proyecto extends Resource
 {
@@ -32,7 +34,7 @@ class Proyecto extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'nombre',
     ];
 
     /**
@@ -49,7 +51,11 @@ class Proyecto extends Resource
             Text::make('Nombre del proyecto', 'nombre')->required(),
             Textarea::make('Descripción', 'descripcion')->required(),
             Date::make('Fecha de inicio', 'fecha_inicio')->required(),
-            Date::make('Fecha de entrega', 'fecha_entrega')->required()
+            Date::make('Fecha de entrega', 'fecha_entrega')->required(),
+            Number::make('Precio','precio_total')->required(),
+            Number::make('Monto Pagado','pagado')->required(),
+            Boolean::make('Finalizado?','finalizado'),
+
         ];
     }
 
