@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
 
+
 class User extends Resource
 {
     /**

@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace App\Nova\Actions;
 
 use Illuminate\Bus\Queueable;
@@ -10,15 +8,12 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Date;
-use App\Pago;
 
-class PagoNomina extends Action
+class FinalizeProject extends Action
 {
     use InteractsWithQueue, Queueable;
 
-    public $name = 'Registrar pago de nómina';
+    public $name = 'Marcar como finalizado';
 
     /**
      * Perform the action on the given models.
@@ -30,16 +25,10 @@ class PagoNomina extends Action
     public function handle(ActionFields $fields, Collection $models)
     {
         foreach ($models as $model) {
-            $pago = new Pago();
-            $pago->Monto = $fields->monto;
-            $pago->concepto = 'nomina';
-            $pago->fecha = $fields->fecha;
-            $pago->empleado_id = $model->id;
-            $pago->save();
-    
+            $model->update([
+               'finalizado' =>  true
+            ]);
         }
-
-        return Action::message('El pago fue registrado exitosamente');
     }
 
     /**
@@ -49,9 +38,6 @@ class PagoNomina extends Action
      */
     public function fields()
     {
-        return [
-            Number::make('Monto')->required(),
-            Date::make('Fecha')->required()
-        ];
+        return [];
     }
 }
