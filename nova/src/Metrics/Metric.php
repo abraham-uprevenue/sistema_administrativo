@@ -25,7 +25,7 @@ abstract class Metric extends Card
      *
      * @var bool
      */
-    public $refreshWhenActionRuns = false;
+    public $refreshWhenActionRuns = true;
 
     /**
      * Calculate the metric's value.
