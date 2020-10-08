@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsToMany;
 use app\Nova\Filters\EmpleadoActivo;
+use app\Nova\Actions\PagoNomina;
 
 class Empleado extends Resource
 {
@@ -112,6 +113,8 @@ class Empleado extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new PagoNomina
+        ];
     }
 }
