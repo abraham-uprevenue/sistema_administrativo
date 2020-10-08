@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Boolean;
 use app\Nova\Actions\FinalizeProject;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
@@ -54,8 +55,8 @@ class Proyecto extends Resource
             Textarea::make('Descripción', 'descripcion')->required(),
             Date::make('Fecha de inicio', 'fecha_inicio')->required(),
             Date::make('Fecha de entrega', 'fecha_entrega')->required(),
-            Number::make('Precio','precio_total')->required(),
-            Number::make('Monto Pagado','pagado')->required(),
+            Currency::make('Precio','precio_total')->required()->nullable(),
+            Currency::make('Monto Pagado','pagado')->required()->nullable(),
             Boolean::make('Finalizado?','finalizado'),
 
         ];
