@@ -12,6 +12,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use app\Nova\Actions\FinalizeProject;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Proyecto extends Resource
 {
@@ -102,7 +103,8 @@ class Proyecto extends Resource
     public function actions(Request $request)
     {
         return [
-            new FinalizeProject
+            new FinalizeProject,
+            new DownloadExcel,
         ];
     }
 }
