@@ -9,6 +9,7 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\User;
 use App\Nova\Empleado;
 use App\Nova\Metrics\ProyectosCount;
+use App\Nova\Metrics\SumaPagos;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -60,7 +61,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             //new Help,
-            new ProyectosCount
+            new ProyectosCount,
+            new SumaPagos
         ];
     }
 
