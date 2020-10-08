@@ -8,6 +8,7 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\User;
 use App\Nova\Empleado;
+use App\Nova\Metrics\ProyectosCount;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -58,7 +59,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            //new Help,
+            new ProyectosCount
         ];
     }
 
