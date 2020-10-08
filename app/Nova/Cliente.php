@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
 use app\Nova\Lenses\NumeroProyectos;
 use Khalin\Nova\Field\Link;
+use Laravel\Nova\Fields\Textarea;
 
 class Cliente extends Resource
 {
@@ -55,7 +56,8 @@ class Cliente extends Resource
                 ->url(function () {
                     return "mailto:{$this->email}";
                 })
-                ->onlyOnIndex()
+                ->onlyOnIndex(),
+            Textarea::make('Comentario', 'comentarios')
         ];
     }
 
