@@ -58,7 +58,6 @@ class Cliente extends Resource
                     return "mailto:{$this->email}";
                 })
                 ->onlyOnIndex(),
-            Textarea::make('Comentario', 'comentarios')
         ];
     }
 

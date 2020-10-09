@@ -24,6 +24,8 @@ class Comment extends Resource
      */
     public static $title = 'id';
 
+    public static $displayInNavigation = false;
+
     /**
      * The columns that should be searched.
      *
@@ -44,7 +46,7 @@ class Comment extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Textarea::make('Comentario', 'comment')->showOnIndex(),
+            Textarea::make('Comentario', 'comment')->showOnIndex()->alwaysShow(),
 
             BelongsTo::make('Cliente'),
         ];
