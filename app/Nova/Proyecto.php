@@ -14,6 +14,7 @@ use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Boolean;
 use app\Nova\Actions\FinalizeProject;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
+use app\Nova\Actions\ProjectPayment;
 
 class Proyecto extends Resource
 {
@@ -109,6 +110,7 @@ class Proyecto extends Resource
         return [
             new FinalizeProject,
             new DownloadExcel,
+            new ProjectPayment
         ];
     }
 }
