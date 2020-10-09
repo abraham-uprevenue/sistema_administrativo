@@ -23,7 +23,7 @@ class Prospecto extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'nombre';
 
     /**
      * The columns that should be searched.

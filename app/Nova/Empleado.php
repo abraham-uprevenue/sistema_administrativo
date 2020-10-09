@@ -31,13 +31,17 @@ class Empleado extends Resource
      */
     public static $title = 'Nombre';
 
+    public function subtitle() {
+        return 'Puesto: ' . $this->puesto->nombre;
+    }
+
     /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
-        'id', 'Nombre', 'Apellido', 'nacimiento'
+        'id', 'Nombre', 'Apellido'
     ];
 
     /**

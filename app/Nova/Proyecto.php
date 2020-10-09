@@ -30,7 +30,11 @@ class Proyecto extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'nombre';
+
+    public function subtitle() {
+        return 'De: ' . $this->cliente->nombre;
+    }
 
     /**
      * The columns that should be searched.
