@@ -52,7 +52,7 @@ class Proyecto extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             BelongsTo::make('Cliente'),
             Text::make('Nombre del proyecto', 'nombre')->required(),
-            Textarea::make('Descripción', 'descripcion')->required(),
+            Textarea::make('Descripción', 'descripcion')->required()->alwaysShow(),
             Date::make('Fecha de inicio', 'fecha_inicio')->required(),
             Date::make('Fecha de entrega', 'fecha_entrega')->required(),
             Currency::make('Precio','precio_total')->required()->nullable(),
