@@ -83,7 +83,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            (new \vmitchell85\NovaLinks\Links())
+            ->add('Freshbooks', 'https://www.freshbooks.com/')
+            ->add('Uprevenue', 'https://uprevenue.mx', '_blank'),
+        ];
     }
 
     /**
