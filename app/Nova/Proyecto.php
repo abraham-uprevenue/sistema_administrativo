@@ -57,6 +57,9 @@ class Proyecto extends Resource
             Date::make('Fecha de entrega', 'fecha_entrega')->required(),
             Currency::make('Precio','precio_total')->required()->nullable(),
             Currency::make('Monto Pagado','pagado')->required()->nullable(),
+            Currency::make('Restante', function() {
+                return $this->precio_total - $this->pagado;
+            }),
             Boolean::make('Finalizado?','finalizado'),
 
         ];
