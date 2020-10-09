@@ -4,28 +4,25 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\HasMany;
-use app\Nova\Lenses\NumeroProyectos;
-use Khalin\Nova\Field\Link;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Cliente extends Resource
+class Comment extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Cliente::class;
+    public static $model = \App\Comment::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'nombre';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -33,7 +30,7 @@ class Cliente extends Resource
      * @var array
      */
     public static $search = [
-        'nombre', 'nombre_empresa'
+        'id',
     ];
 
     /**
@@ -47,18 +44,9 @@ class Cliente extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make('Nombre de la persona', 'nombre')->required(),
-            Text::make('Nombre de la empresa', 'nombre_empresa')->required(),
-            Text::make('Correo', 'email')->required()->hideFromIndex(),
-            Text::make('Teléfono', 'telefono')->rules('required', 'digits:10'),
-            HasMany::make('Proyecto'),
-            HasMany::make('Comment'),
-            Link::make('Correo', 'email')
-                ->url(function () {
-                    return "mailto:{$this->email}";
-                })
-                ->onlyOnIndex(),
-            Textarea::make('Comentario', 'comentarios')
+            Textarea::make('Comentario', 'comment')->showOnIndex(),
+
+            BelongsTo::make('Cliente'),
         ];
     }
 
@@ -92,9 +80,7 @@ class Cliente extends Resource
      */
     public function lenses(Request $request)
     {
-        return [
-            new NumeroProyectos
-        ];
+        return [];
     }
 
     /**
