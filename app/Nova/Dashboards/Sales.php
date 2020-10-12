@@ -5,6 +5,7 @@ namespace App\Nova\Dashboards;
 use Laravel\Nova\Dashboard;
 use App\Nova\Metrics\DailySales;
 use App\Nova\Metrics\SalesByClient;
+use App\Nova\Metrics\PaidByClient;
 
 class Sales extends Dashboard
 {
@@ -18,6 +19,7 @@ class Sales extends Dashboard
         return [
             new DailySales,
             new SalesByClient,
+            new PaidByClient,
         ];
     }
 
