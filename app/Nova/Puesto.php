@@ -7,6 +7,8 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Currency;
 
 class Puesto extends Resource
 {
@@ -45,6 +47,10 @@ class Puesto extends Resource
             ID::make(__('ID'), 'id')->sortable(),
 
             Text::make('Nombre del Puesto', 'nombre')->sortable(),
+
+            Textarea::make('Descripcion del puesto', 'description')->alwaysShow(),
+
+            Currency::make('Salario','salary')->required()->nullable()->sortable(),
 
             HasMany::make('Empleados')->sortable(),
         ];
