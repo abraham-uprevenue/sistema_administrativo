@@ -20,6 +20,7 @@ class CreateProspectosTable extends Migration
             $table->string('telefono');
             $table->date('fecha')->nullable();
             $table->text('comentario')->nullable();
+            $table->unsignedInteger('statusprospect_id');
             $table->timestamps();
         });
     }

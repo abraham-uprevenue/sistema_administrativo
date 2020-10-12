@@ -52,7 +52,7 @@ class Prospecto extends Resource
             Text::make('Teléfono', 'telefono')->rules('required', 'digits:10')->sortable(),
             Date::make('Fecha', 'fecha')->required()->sortable(),
             Textarea::make('Comentario', 'comentario')->sortable(),
-            BelongsTo::make('Estatus','StatusProspect', 'App\Nova\StatusProspect')
+            BelongsTo::make('StatusProspect')
         ];
     }
 
