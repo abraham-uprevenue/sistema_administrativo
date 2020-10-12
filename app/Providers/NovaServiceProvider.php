@@ -10,6 +10,7 @@ use App\Nova\User;
 use App\Nova\Empleado;
 use App\Nova\Metrics\ProyectosCount;
 use App\Nova\Metrics\SumaPagos;
+use App\Nova\Dashboards\Sales;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -74,7 +75,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function dashboards()
     {
-        return [];
+        return [
+            new Sales,
+        ];
     }
 
     /**
