@@ -47,17 +47,17 @@ class Cliente extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make('Nombre de la persona', 'nombre')->required(),
-            Text::make('Nombre de la empresa', 'nombre_empresa')->required(),
-            Text::make('Correo', 'email')->required()->hideFromIndex(),
-            Text::make('Teléfono', 'telefono')->rules('required', 'digits:10'),
-            HasMany::make('Proyecto'),
-            HasMany::make('Comment'),
+            Text::make('Nombre de la persona', 'nombre')->required()->sortable(),
+            Text::make('Nombre de la empresa', 'nombre_empresa')->required()->sortable(),
+            Text::make('Correo', 'email')->required()->hideFromIndex()->sortable(),
+            Text::make('Teléfono', 'telefono')->rules('required', 'digits:10')->sortable(),
+            HasMany::make('Proyecto')->sortable(),
+            HasMany::make('Comment')->sortable(),
             Link::make('Correo', 'email')
                 ->url(function () {
                     return "mailto:{$this->email}";
                 })
-                ->onlyOnIndex(),
+                ->onlyOnIndex()->sortable(),
         ];
     }
 

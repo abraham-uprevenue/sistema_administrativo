@@ -44,9 +44,9 @@ class Puesto extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make('Nombre del Puesto', 'nombre'),
+            Text::make('Nombre del Puesto', 'nombre')->sortable(),
 
-            HasMany::make('Empleados')
+            HasMany::make('Empleados')->sortable(),
         ];
     }
 

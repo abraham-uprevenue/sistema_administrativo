@@ -45,11 +45,11 @@ class Prospecto extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make('Nombre de la persona', 'nombre')->required(),
-            Text::make('Correo', 'email')->required(),
-            Text::make('Teléfono', 'telefono')->rules('required', 'digits:10'),
-            Date::make('Fecha', 'fecha')->required(),
-            Textarea::make('Comentario', 'comentario'),
+            Text::make('Nombre de la persona', 'nombre')->required()->sortable(),
+            Text::make('Correo', 'email')->required()->sortable(),
+            Text::make('Teléfono', 'telefono')->rules('required', 'digits:10')->sortable(),
+            Date::make('Fecha', 'fecha')->required()->sortable(),
+            Textarea::make('Comentario', 'comentario')->sortable(),
         ];
     }
 

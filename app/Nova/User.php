@@ -12,6 +12,10 @@ use Laravel\Nova\Fields\HasMany;
 
 class User extends Resource
 {
+    public static function label(){
+        return 'Usuarios';
+    }
+
     /**
      * The model the resource corresponds to.
      *

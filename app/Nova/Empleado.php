@@ -55,21 +55,21 @@ class Empleado extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make(__('Nombre'), 'Nombre')->rules(['required']),
+            Text::make(__('Nombre'), 'Nombre')->rules(['required'])->sortable(),
 
-            Text::make(__('Apellido'), 'Apellido'),
+            Text::make(__('Apellido'), 'Apellido')->sortable(),
 
-            BelongsTo::make('Puesto'),
+            BelongsTo::make('Puesto')->sortable(),
 
-            Date::make(__('Fecha De Nacimiento'), 'nacimiento')->hideFromIndex(),
+            Date::make(__('Fecha De Nacimiento'), 'nacimiento')->hideFromIndex()->sortable(),
 
-            Date::make(__('Fecha De Ingreso'), 'ingreso'),
+            Date::make(__('Fecha De Ingreso'), 'ingreso')->sortable(),
 
-            Boolean::make('Activo', 'is_active'),
+            Boolean::make('Activo', 'is_active')->sortable(),
 
-            BelongsTo::make('User'),
+            BelongsTo::make('User')->sortable(),
 
-            HasMany::make('Pagos')
+            HasMany::make('Pagos')->sortable(),
         ];
     }
 

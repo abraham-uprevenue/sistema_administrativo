@@ -55,17 +55,17 @@ class Proyecto extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make('Cliente'),
-            Text::make('Nombre del proyecto', 'nombre')->required(),
-            Textarea::make('Descripción', 'descripcion')->required()->alwaysShow(),
-            Date::make('Fecha de inicio', 'fecha_inicio')->required(),
-            Date::make('Fecha de entrega', 'fecha_entrega')->required(),
-            Currency::make('Precio','precio_total')->required()->nullable(),
-            Currency::make('Monto Pagado','pagado')->required()->nullable(),
+            BelongsTo::make('Cliente')->sortable(),
+            Text::make('Nombre del proyecto', 'nombre')->required()->sortable(),
+            Textarea::make('Descripción', 'descripcion')->required()->alwaysShow()->sortable(),
+            Date::make('Fecha de inicio', 'fecha_inicio')->required()->sortable(),
+            Date::make('Fecha de entrega', 'fecha_entrega')->required()->sortable(),
+            Currency::make('Precio','precio_total')->required()->nullable()->sortable(),
+            Currency::make('Monto Pagado','pagado')->required()->nullable()->sortable(),
             Currency::make('Restante', function() {
                 return $this->precio_total - $this->pagado;
-            }),
-            Boolean::make('Finalizado?','finalizado'),
+            })->sortable(),
+            Boolean::make('Finalizado?','finalizado')->sortable(),
 
         ];
     }

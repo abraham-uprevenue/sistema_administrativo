@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function empleados() {
         
-        $this->hasMany(Empleado::class);
+        $this->hasMany(Empleado::class); 
 }
 }
