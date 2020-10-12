@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\Number;
 
 class Puesto extends Resource
 {
@@ -51,6 +52,10 @@ class Puesto extends Resource
             Textarea::make('Descripcion del puesto', 'description')->alwaysShow(),
 
             Currency::make('Salario','salary')->required()->nullable()->sortable(),
+
+            Number::make('# de Empleados', function (){
+                return \App\Empleado::where('puesto_id',$this->id)->count();
+            })->sortable(),
 
             HasMany::make('Empleados')->sortable(),
         ];
