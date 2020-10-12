@@ -47,13 +47,13 @@ class Pago extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Number::make('Monto', 'Monto')->required(),
+            Number::make('Monto', 'Monto')->required()->sortable(),
 
-            Select::make('Concepto', 'concepto')->options(['nomina' => 'Nomina', 'bono' => 'Bono'])->required(),
+            Select::make('Concepto', 'concepto')->options(['nomina' => 'Nomina', 'bono' => 'Bono'])->required()->sortable(),
 
-            Date::make('Fecha del pago','fecha')->required(),
+            Date::make('Fecha del pago','fecha')->required()->sortable(),
 
-            BelongsTo::make('Empleado')
+            BelongsTo::make('Empleado')->sortable()
         ];
     }
 

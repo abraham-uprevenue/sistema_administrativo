@@ -94,7 +94,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             (new \vmitchell85\NovaLinks\Links())
-            ->add('Freshbooks', 'https://www.freshbooks.com/')
+            ->add('Freshbooks', 'https://my.freshbooks.com/')
             ->add('Uprevenue', 'https://uprevenue.mx', '_blank'),
         ];
     }

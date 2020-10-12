@@ -46,9 +46,9 @@ class Comment extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Textarea::make('Comentario', 'comment')->showOnIndex()->alwaysShow(),
+            Textarea::make('Comentario', 'comment')->showOnIndex()->alwaysShow()->sortable(),
 
-            BelongsTo::make('Cliente'),
+            BelongsTo::make('Cliente')->sortable(),
         ];
     }
 
