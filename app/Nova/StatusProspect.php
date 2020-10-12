@@ -7,25 +7,23 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 
-class Prospecto extends Resource
+class StatusProspect extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-
-    public static $model = \App\Prospecto::class;
+    public static $model = \App\StatusProspect::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'nombre';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -33,7 +31,7 @@ class Prospecto extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name', 'id'
     ];
 
     /**
@@ -46,13 +44,9 @@ class Prospecto extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-
-            Text::make('Nombre de la persona', 'nombre')->required()->sortable(),
-            Text::make('Correo', 'email')->required()->sortable(),
-            Text::make('Teléfono', 'telefono')->rules('required', 'digits:10')->sortable(),
-            Date::make('Fecha', 'fecha')->required()->sortable(),
-            Textarea::make('Comentario', 'comentario')->sortable(),
-            BelongsTo::make('Estatus','StatusProspect', 'App\Nova\StatusProspect')
+            Text::make('Nombre', 'name')->required(),
+            Textarea::make('Descripción', 'description')->alwaysShow(),
+            HasMany::make('Prospecto'),
         ];
     }
 
@@ -99,4 +93,6 @@ class Prospecto extends Resource
     {
         return [];
     }
+
+    public static $displayInNavigation = false;
 }

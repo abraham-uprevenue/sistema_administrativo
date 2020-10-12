@@ -20,6 +20,7 @@ class CreateProyectosTable extends Migration
             $table->text('descripcion');
             $table->date('fecha_inicio');
             $table->date('fecha_entrega');
+            $table->unsignedInteger('statusprospect_id')->nullable;
             $table->timestamps();
         });
     }

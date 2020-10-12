@@ -57,7 +57,7 @@ class Empleado extends Resource
 
             Text::make(__('Nombre'), 'Nombre')->rules(['required'])->sortable(),
 
-            Text::make(__('Apellido'), 'Apellido')->sortable(),
+            Text::make(__('Apellido'), 'Apellido')->required()->sortable(),
 
             BelongsTo::make('Puesto')->sortable(),
 
@@ -65,9 +65,9 @@ class Empleado extends Resource
 
             Date::make(__('Fecha De Ingreso'), 'ingreso')->sortable(),
 
-            Boolean::make('Activo', 'is_active')->sortable(),
+            Boolean::make('Activo', 'is_active')->sortable()->hideWhenCreating(),
 
-            BelongsTo::make('User')->sortable(),
+            BelongsTo::make('User')->sortable()->nullable(),
 
             HasMany::make('Pagos')->sortable(),
         ];
