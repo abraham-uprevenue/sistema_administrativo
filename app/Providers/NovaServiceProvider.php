@@ -11,6 +11,9 @@ use App\Nova\Empleado;
 use App\Nova\Metrics\ProyectosCount;
 use App\Nova\Metrics\SumaPagos;
 use App\Nova\Dashboards\Sales;
+use App\Nova\Dashboards\Employees;
+use App\Nova\Dashboards\Projects;
+
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -77,6 +80,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new Sales,
+            new Employees,
+            new Projects,
         ];
     }
 
