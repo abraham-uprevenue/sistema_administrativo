@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class EmployeeDocument extends Resource
@@ -51,6 +52,8 @@ class EmployeeDocument extends Resource
             Text::make('Nombre', 'name')->required(),
             File::make('Archivo', 'path')->disk('public')->required(),
             BelongsTo::make('Empleado'),
+            DateTime::make('Creado','created_at')->format('DD-MMM-YYYY HH:mm:ss')->exceptOnForms(),
+            DateTime::make('Actualizado','updated_at')->format('DD-MMM-YYYY HH:mm:ss')->exceptOnForms(),
         ];
     }
 
