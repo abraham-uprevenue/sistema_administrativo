@@ -18,9 +18,14 @@ class Empleado extends Model
     public function puesto() {
         return $this->belongsTo(Puesto::class); }
 
-        public function pagos() {
+    public function pagos() {
         
             return $this->HasMany(Pago::class);
-     }
+    }
+
+    public function employeedocument() {
+        
+        return $this->HasMany(EmployeeDocument::class);
+}
 
 }

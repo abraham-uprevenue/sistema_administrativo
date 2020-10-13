@@ -4,38 +4,30 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\BelongsToMany;
-use app\Nova\Filters\EmpleadoActivo;
-use app\Nova\Actions\PagoNomina;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Empleado extends Resource
+class EmployeeDocument extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Empleado::class;
+    public static $model = \App\EmployeeDocument::class;
+
+    public static $group = 'Empleados';
+
+    public static $displayInNavigation = false;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'Nombre';
-
-    public static $group = 'Empleados';
-
-    public function subtitle() {
-        return 'Puesto: ' . $this->puesto->nombre;
-    }
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -43,7 +35,7 @@ class Empleado extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'Nombre', 'Apellido'
+        'id',
     ];
 
     /**
@@ -56,24 +48,9 @@ class Empleado extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-
-            Text::make(__('Nombre'), 'Nombre')->rules(['required'])->sortable(),
-
-            Text::make(__('Apellido'), 'Apellido')->required()->sortable(),
-
-            BelongsTo::make('Puesto')->sortable(),
-
-            Date::make(__('Fecha De Nacimiento'), 'nacimiento')->hideFromIndex()->sortable(),
-
-            Date::make(__('Fecha De Ingreso'), 'ingreso')->sortable(),
-
-            Boolean::make('Activo', 'is_active')->sortable()->hideWhenCreating(),
-
-            BelongsTo::make('User')->sortable()->nullable(),
-
-            HasMany::make('EmployeeDocument'),
-
-            HasMany::make('Pagos'),
+            Text::make('Nombre', 'name')->required(),
+            File::make('Archivo', 'path')->disk('public')->required(),
+            BelongsTo::make('Empleado'),
         ];
     }
 
@@ -96,10 +73,7 @@ class Empleado extends Resource
      */
     public function filters(Request $request)
     {
-        return [
-
-            new EmpleadoActivo
-        ];
+        return [];
     }
 
     /**
@@ -121,8 +95,14 @@ class Empleado extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-            new PagoNomina
-        ];
+        return [];
+    }
+
+    public static function label(){
+        return 'Documentos';
+    }
+
+    public static function singularLabel(){
+        return 'Documento';
     }
 }
