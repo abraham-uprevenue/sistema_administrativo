@@ -20,6 +20,8 @@ class Pago extends Resource
      */
     public static $model = \App\Pago::class;
 
+    public static $group = 'Empleados';
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

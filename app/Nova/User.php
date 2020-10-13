@@ -23,6 +23,8 @@ class User extends Resource
      */
     public static $model = \App\User::class;
 
+    public static $group = 'Empleados';
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

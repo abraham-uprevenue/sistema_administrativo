@@ -25,6 +25,8 @@ class Proyecto extends Resource
      */
     public static $model = \App\Proyecto::class;
 
+    public static $group = 'Clientes';
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

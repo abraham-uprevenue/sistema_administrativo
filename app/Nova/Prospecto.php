@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\BelongsTo;
+use Khalin\Nova\Field\Link;
 
 class Prospecto extends Resource
 {
@@ -19,6 +20,8 @@ class Prospecto extends Resource
      */
 
     public static $model = \App\Prospecto::class;
+
+    public static $group = 'Clientes';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -48,11 +51,16 @@ class Prospecto extends Resource
             ID::make(__('ID'), 'id')->sortable(),
 
             Text::make('Nombre de la persona', 'nombre')->required()->sortable(),
-            Text::make('Correo', 'email')->required()->sortable(),
+            Link::make('Correo', 'email')
+                ->url(function () {
+                    return "mailto:{$this->email}";
+                })
+                ->onlyOnIndex()->sortable(),
+            Text::make('Correo', 'email')->required()->hidefromIndex(),
             Text::make('Teléfono', 'telefono')->rules('required', 'digits:10')->sortable(),
             Date::make('Fecha', 'fecha')->required()->sortable(),
             Textarea::make('Comentario', 'comentario')->sortable(),
-            BelongsTo::make('StatusProspect')
+            BelongsTo::make('Estatus', 'statusprospect', 'App\Nova\StatusProspect'),
         ];
     }
 

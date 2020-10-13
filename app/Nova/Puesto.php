@@ -27,6 +27,8 @@ class Puesto extends Resource
      */
     public static $title = 'nombre';
 
+    public static $group = 'Empleados';
+
     /**
      * The columns that should be searched.
      *
