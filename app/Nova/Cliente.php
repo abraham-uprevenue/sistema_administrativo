@@ -27,6 +27,8 @@ class Cliente extends Resource
      */
     public static $title = 'nombre';
 
+    public static $group = 'Clientes';
+
     /**
      * The columns that should be searched.
      *

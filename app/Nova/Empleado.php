@@ -31,6 +31,8 @@ class Empleado extends Resource
      */
     public static $title = 'Nombre';
 
+    public static $group = 'Empleados';
+
     public function subtitle() {
         return 'Puesto: ' . $this->puesto->nombre;
     }
