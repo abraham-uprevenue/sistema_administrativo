@@ -8,7 +8,8 @@ class Prospecto extends Model
 {
     protected $casts = ['fecha' => 'date'];
 
-    public function statusprospect() {
+    public function statusprospect() 
+    {
         return $this->belongsTo(StatusProspect::class);
     }
 }

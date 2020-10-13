@@ -71,7 +71,7 @@ class Empleado extends Resource
 
             BelongsTo::make('User')->sortable()->nullable(),
 
-            HasMany::make('EmployeeDocument'),
+            HasMany::make('Documentos del Empleado', 'employeedocument', 'App\Nova\EmployeeDocument'),
 
             HasMany::make('Pagos'),
         ];

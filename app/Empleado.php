@@ -11,21 +11,25 @@ class Empleado extends Model
                         'ingreso' => 'date'    
     ];
 
-    public function user() {
-            return $this->belongsTo(User::class);
+    public function user() 
+    {
+        return $this->belongsTo(User::class);
     }
 
-    public function puesto() {
+    public function puesto() 
+    {
         return $this->belongsTo(Puesto::class); }
 
-    public function pagos() {
+    public function pagos() 
+    {
         
-            return $this->HasMany(Pago::class);
+        return $this->HasMany(Pago::class);
     }
 
-    public function employeedocument() {
+    public function employeedocument() 
+    {
         
         return $this->HasMany(EmployeeDocument::class);
-}
+    }
 
 }
